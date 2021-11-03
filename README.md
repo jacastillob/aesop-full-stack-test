@@ -11,7 +11,7 @@ Typescript project to expose an API using a CSV file as datasource
 
 - Jest
 - Typescript
-- Fast-Csv
+- Fast-Csv (https://c2fo.github.io/fast-csv/)
 
 ## Architectural Patterns
 

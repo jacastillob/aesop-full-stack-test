@@ -13,48 +13,30 @@ export default class CsvDataSource implements IDataSource {
     async PullData(): Promise<Array<Order>> {
 
         return new Promise((resolve, reject) => {
-
+            let Records = new Array<Order>();
             fs.createReadStream(this.Source)
                 .pipe(csv.parse({ headers: true }))
                 // pipe the parsed input into a csv formatter
                 .pipe(
                     csv.format<Order, Order>({ headers: true }),
                 )
+                .on('error', error => reject(error))
                 // Using the transform function from the formatting stream
                 .transform((row, next): void => {
-                    console.log(row)
-                    let Records = new Array<Order>();
-                    if (Records == undefined) reject('Error')
-                    // return next(null, {
-                    //     CARRIERSERVICE: row.CARRIERSERVICE,
-                    //     ORDERCLIENTREF: row.ORDERCLIENTREF,
-                    //     ADDRESSNAME: row.ADDRESSNAME,
-                    //     SKUBARCODE: row.SKUBARCODE,
-                    //     SKUQUANTITY:row.SKUQUANTITY
-                    // });
+
+                    Records.push(row);
+                    next(null, {
+                        CARRIERSERVICE: row.CARRIERSERVICE,
+                        ORDERCLIENTREF: row.ORDERCLIENTREF,
+                        ADDRESSNAME: row.ADDRESSNAME,
+                        SKUBARCODE: row.SKUBARCODE,
+                        SKUQUANTITY: row.SKUQUANTITY
+                    });
                     resolve(Records);
 
-                    // if (err) {
-                    //     return next(err);
-                    // }
-                    // if (!user) {
-                    //     return next(new Error(`Unable to find user for ${row.id}`);
-                    // }
-                    // return next(null, {
-                    //     id: user.id,
-                    //     firstName: row.first_name,
-                    //     lastName: row.last_name,
-                    //     address: row.address,
-                    //     // properties from user
-                    //     isVerified: user.isVerified,
-                    //     hasLoggedIn: user.hasLoggedIn,
-                    //     age: user.age,
-                    // });
+
 
                 })
-                .pipe(process.stdout)
-                .on('end', () => process.exit());
-
 
         });
 

@@ -13,7 +13,7 @@ export default class OrdersService {
         .then(value => {
 
           let SourceData: Array<Order> = value;
-
+          console.log(SourceData)
           resolve(SourceData)
 
         })
@@ -22,7 +22,6 @@ export default class OrdersService {
 
 
   }
-
 
 
 }
