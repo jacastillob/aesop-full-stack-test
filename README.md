@@ -43,7 +43,13 @@ npm run coverage
 - Run Main.ts ...
 
 ```shell
-npm run start
+npm run main
+```
+
+- Run Server.ts ...
+
+```shell
+npm run server
 ```
 ## Tests Vs Code
 

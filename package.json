@@ -2,10 +2,13 @@
   "scripts": {
     "test": "jest --config ./jest.config.js",
     "coverage": "jest --coverage --config ./jest.config.js",
-    "start": "ts-node Main.ts"
+    "main": "ts-node Main.ts",
+    "server": "ts-node Server.ts"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.4.7",
     "fast-csv": "^4.3.6",
     "jest": "^27.1.1",
     "ts-jest": "^27.0.5",
@@ -22,5 +25,8 @@
       "tsx",
       "js"
     ]
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

@@ -3,10 +3,6 @@ import OrdersService from "./src/service/OrdersService";
 
 let os: OrdersService = new OrdersService(new JsonDataSource('./assets/input/order_lines.csv'));
 
-os.PullingData()
+os.PullData()
     .then(value => { console.log(value) })
-    .catch(error => { })
-
-
-
-
+    .catch(error => { console.log(error) })

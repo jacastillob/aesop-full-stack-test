@@ -1,7 +1,6 @@
 import IDataSource from "../interface/IDataSource";
 import Order from "../model/Order";
 import fs from "fs";
-import * as path from 'path';
 import * as csv from 'fast-csv';
 // In case there could be another datasource,using the dependency inversion principle it is possible to achieve it
 
@@ -32,12 +31,15 @@ export default class CsvDataSource implements IDataSource {
                         SKUBARCODE: row.SKUBARCODE,
                         SKUQUANTITY: row.SKUQUANTITY
                     });
-                    resolve(Records);
-
 
 
                 })
+                //.pipe(process.stdout)
+                .on('end', () => {
+                    resolve(Records);
+                    process.exit()
 
+                });
         });
 
     }
