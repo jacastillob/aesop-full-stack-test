@@ -11,7 +11,7 @@ export default class OrdersService {
     return new Promise((resolve, reject) => {
       this.DataSource.PullData()
         .then(value => {
-
+          console.log(value);
           let SourceData: Array<Order> = value;
 
           resolve(SourceData)

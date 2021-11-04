@@ -10,7 +10,7 @@ describe('ProcessOrdersService', () => {
         expect(ordersServiceMock).toBeDefined();
     });
     test('There is at least 1 Order ', () => {
-        return ordersServiceMock.PullingData().then(data => {
+        return ordersServiceMock.PullData().then(data => {
             expect(data.length).toBeGreaterThan(0);
         });
     });
