@@ -46,7 +46,7 @@ npm run coverage
 npm run main
 ```
 
-- Run Server.ts ...
+- Run Server.ts ->localhost:5000 ...
 
 ```shell
 npm run server
